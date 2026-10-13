@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoveMate Korea | 외국인 유학생 이사 서비스</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;color:#172033;background:#f7f9fc;line-height:1.6}
+header{background:#fff;border-bottom:1px solid #e8edf5;position:sticky;top:0;z-index:10}
+.nav{max-width:1100px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:800;color:#246bfe}.logo span{color:#172033}
+nav a{margin-left:20px;text-decoration:none;color:#444;font-size:14px}
+.hero{background:linear-gradient(135deg,#eef5ff,#fff);padding:75px 22px}
+.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.3fr .7fr;gap:35px;align-items:center}
+.badge{display:inline-block;background:#e4edff;color:#246bfe;padding:7px 12px;border-radius:20px;font-size:13px;font-weight:700}
+h1{font-size:48px;line-height:1.15;margin:18px 0 14px}.hero p{color:#5c6678;font-size:17px}
+.btn{display:inline-block;background:#246bfe;color:#fff;padding:13px 22px;border-radius:10px;text-decoration:none;font-weight:700;margin-top:12px}
+.price-card{background:#fff;border-radius:22px;padding:28px;box-shadow:0 15px 45px #1e3a8a18}
+.price-card small{color:#777}.big-price{font-size:35px;font-weight:800;color:#246bfe;margin:8px 0}
+section{max-width:1100px;margin:auto;padding:70px 22px}h2{text-align:center;font-size:30px;margin:0 0 35px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:25px}.icon{font-size:30px}.card h3{margin:10px 0 6px}.muted{color:#697386}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 25px #1720330b}
+th,td{padding:17px;text-align:center;border-bottom:1px solid #edf0f5}th{background:#246bfe;color:#fff}tr:last-child td{border-bottom:0}
+.form-wrap{background:#fff;border-radius:20px;padding:30px;box-shadow:0 10px 35px #1720330d}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #dce2eb;border-radius:9px;font-size:14px}textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}.calc{margin-top:20px;background:#f1f6ff;border-radius:12px;padding:18px;text-align:center}.calc strong{font-size:28px;color:#246bfe}
+button{border:0;cursor:pointer;background:#246bfe;color:#fff;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px}
+.note{font-size:13px;color:#697386;margin-top:12px}
+footer{background:#172033;color:#dce3ef;text-align:center;padding:35px 20px;font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:30;align-items:center;justify-content:center;padding:20px}.modal-box{background:#fff;border-radius:18px;padding:30px;max-width:430px;text-align:center}.modal-box h3{font-size:24px;margin-top:0}
+@media(max-width:760px){nav a{display:none}.hero-inner{grid-template-columns:1fr}h1{font-size:38px}.grid,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}section{padding:50px 18px}.hero{padding:55px 18px}}
+
+.route-info{background:#eef5ff;padding:15px;border-radius:12px}.route-info p{margin:5px 0 10px;color:#586780;font-size:13px}.secondary{background:#e7edfa;color:#23416e}.secondary:disabled{opacity:.7;cursor:not-allowed}.progress{height:13px;background:#e6ecf6;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#246bfe;width:0%;transition:width .2s}.task-item{display:flex;gap:12px;align-items:flex-start;padding:12px 3px;border-bottom:1px solid #edf0f5}.task-item input{width:20px;height:20px;flex:none}.task-item label{cursor:pointer}.task-group{margin-top:24px;color:#246bfe}.messages{height:270px;overflow:auto;background:#f6f8fc;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:90%;padding:11px 14px;border-radius:14px;white-space:pre-wrap}.bubble.bot{align-self:flex-start;background:#e5edff}.bubble.user{align-self:flex-end;background:#246bfe;color:white}.chat-input{display:flex;gap:8px;margin-top:12px}.chat-input input{flex:1;min-width:0}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chips button{background:#e8efff;color:#246bfe;padding:8px 10px;font-size:12px}
+
+#kakaoMap{height:310px;border-radius:12px;background:#e9eff9;display:flex;align-items:center;justify-content:center;color:#60728e;margin-top:12px;overflow:hidden}
+.map-config{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.map-config input{flex:1;min-width:180px}.map-config button{padding:11px 14px}
+.map-status{font-size:13px;margin-top:9px;color:#34486b;white-space:pre-wrap}.map-hint{font-size:12px;color:#66758d;margin-top:8px}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">MoveMate <span>Korea</span></div><nav><a href="#service">서비스</a><a href="#price">요금</a><a href="#booking">예약</a><a href="#checklist">체크리스트</a><a href="#chatbot">챗봇</a></nav></div></header>
+
+<div class="hero"><div class="hero-inner">
+<div><span class="badge">외국인 유학생을 위한 이사 서비스</span>
+<h1>한국에서 이사,<br><span style="color:#246bfe">더 쉽고 저렴하게.</span></h1>
+<p>언어 장벽과 복잡한 이사 과정을 줄이고, 외국인 유학생이 쉽고 편하게 이사할 수 있도록 도와드립니다.</p>
+<a class="btn" href="#booking">이사 예약하기 / Đặt chuyển nhà</a></div>
+<div class="price-card"><small>기본 이사 요금 / Giá cơ bản</small><div class="big-price">25,000원~</div><div>0–3 km 기준</div><hr><b>포장 도움 +10,000원</b><p class="muted">거리와 짐의 양에 따라 예상 금액을 확인합니다.</p></div>
+</div></div>
+
+<section id="service"><h2>서비스 / Dịch vụ</h2><div class="grid">
+<div class="card"><div class="icon">🚚</div><h3>간편한 이사</h3><p class="muted">출발지와 도착지만 입력하면 간단하게 예약할 수 있습니다.</p></div>
+<div class="card"><div class="icon">🌏</div><h3>외국인 친화 서비스</h3><p class="muted">한국어와 베트남어로 핵심 정보를 확인할 수 있습니다.</p></div>
+<div class="card"><div class="icon">💰</div><h3>합리적인 가격</h3><p class="muted">이동 거리를 기준으로 기본 요금을 투명하게 확인합니다.</p></div>
+</div></section>
+
+<section id="price"><h2>요금표 / Bảng giá</h2>
+<table><thead><tr><th>거리 / Khoảng cách</th><th>기본 요금 / Giá cơ bản</th></tr></thead>
+<tbody><tr><td>0–3 km (MINI)</td><td>25,000₩</td></tr><tr><td>3–5 km (MINI)</td><td>30,000₩</td></tr><tr><td>5–10 km (MINI)</td><td>40,000₩</td></tr><tr><td>10–15 km (MINI)</td><td>50,000₩</td></tr><tr><td>15–20 km (MINI)</td><td>60,000₩</td></tr><tr><td>20 km 초과 / STANDARD / PARTNER</td><td>별도 견적 / Báo giá riêng</td></tr><tr><td>포장 도움 (MINI)</td><td>+10,000₩</td></tr></tbody></table>
+<p class="note">※ 기본 가격은 프로젝트용 예시 요금입니다. 실제 요금은 짐의 양, 층수, 차량 크기 및 추가 서비스에 따라 달라질 수 있습니다.</p>
+</section>
+
+<section id="booking"><h2>이사 예약 / Đặt chuyển nhà</h2><div class="form-wrap">
+<div class="form-grid">
+<div class="field"><label>출발지 / Địa chỉ đi</label><input id="from" placeholder="예: 대전광역시 중구 ○○동"></div>
+<div class="field"><label>도착지 / Địa chỉ đến</label><input id="to" placeholder="예: 대전광역시 서구 ○○동"></div>
+<div class="field"><label>이사 날짜 / Ngày chuyển</label><input id="date" type="date"></div>
+<div class="field"><label>희망 시간 / Thời gian</label><input id="time" type="time"></div>
+<div class="field full"><div class="route-info"><strong>📍 카카오맵 주소 검색 / Tìm địa chỉ trên Kakao Maps</strong>
+<p>출발지와 도착지를 입력하고 검색하세요. / Nhập địa chỉ đi và đến rồi bấm tìm. Sau khi tìm địa chỉ, hệ thống thử tính km và thời gian lái xe qua API. Nếu chưa cấu hình API, hãy nhập km thủ công.</p>
+<button type="button" id="routeBtn">🔎 지도에서 주소 찾기 / Tìm trên bản đồ</button>
+<div id="mapStatus" class="map-status" role="status">Kakao Maps chưa được cấu hình.</div>
+<div id="drivingResult" class="map-status" aria-live="polite">🚗 주행 거리 / Km lái xe: chưa có · ⏱️ 예상 시간 / Thời gian: chưa có</div>
+<div id="kakaoMap">🗺️ Kakao Maps</div>
+<div class="map-hint">※ Km và thời gian lái xe chỉ hiện khi API chỉ đường hoạt động. Nếu không, nhập km thủ công. Không dùng khoảng cách đường thẳng để báo giá.</div>
+<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">⚙️ 지도 설정 / Cài đặt bản đồ (demo)</summary>
+<p class="map-hint">Dán <b>JavaScript Key</b> của Kakao Developers (KHÔNG phải REST API Key). Khóa được lưu trên trình duyệt này. Để bản đồ chạy cho mọi khách, cần cấu hình khóa trong file HTML khi triển khai.</p>
+<div class="map-config"><input id="kakaoKeyInput" type="text" autocomplete="off" spellcheck="false" placeholder="Kakao JavaScript Key"><button type="button" id="saveKakaoKey">저장 / Lưu</button></div>
+</details></div></div><div class="field"><label>주행 거리 (km) / Km đường ô tô (tự động hoặc thủ công)</label><input id="km" type="number" min="0" step="0.1" placeholder="예: 8"></div>
+<div class="field"><label>포장 도움 / Hỗ trợ đóng gói</label><select id="packing"><option value="no">필요 없음 / Không cần</option><option value="yes">필요함 (+10,000₩)</option></select></div>
+<div class="field"><label>짐의 양 / Lượng đồ</label><select id="luggage"><option value="mini">MINI – 소량 / Ít đồ</option><option value="standard">STANDARD – 보통 / Vừa</option><option value="partner">PARTNER – 많음 / Nhiều</option></select></div>
+<div class="field"><label>연락처 / Số điện thoại 또는 KakaoTalk</label><input id="contact" placeholder="010-0000-0000"></div>
+<div class="field"><label>이름 / Tên</label><input id="name" placeholder="이름"></div>
+<div class="field"><label>출발지 층수 / Tầng đi</label><input id="floorFrom" type="number" min="0" placeholder="예: 3"></div>
+<div class="field"><label>도착지 층수 / Tầng đến</label><input id="floorTo" type="number" min="0" placeholder="예: 5"></div>
+<div class="field full"><label>요청사항 / Ghi chú</label><textarea id="notes" placeholder="엘리베이터 유무, 큰 짐 등"></textarea></div>
+</div>
+<div class="calc">예상 금액 / Giá dự kiến<br><strong id="total">거리 입력 필요</strong><div id="breakdown" class="note">Vui lòng nhập số km hoặc chờ tích hợp API bản đồ.</div></div>
+<div style="text-align:center;margin-top:22px"><button onclick="submitBooking()">예약 신청하기 / Gửi yêu cầu</button></div>
+</div></section>
+
+<section id="checklist"><h2>📋 이사 체크리스트 / Checklist chuyển nhà</h2><div class="form-wrap"><p class="muted">체크한 항목은 이 기기에 저장됩니다. / Những mục đã tích được lưu trên thiết bị này.</p><div class="progress"><div id="progressBar"></div></div><p id="progressText" style="font-weight:700">0% hoàn thành</p><div id="tasks"></div><button type="button" class="secondary" id="resetTasks">초기화 / Làm lại</button></div></section>
+<section id="chatbot"><h2>💬 한·베 챗봇 / Chatbot Hàn–Việt</h2><div class="form-wrap"><p class="muted">FAQ 챗봇 / Chatbot trả lời câu hỏi thường gặp (chưa phải AI tạo sinh).</p><div id="messages" class="messages" aria-live="polite"><div class="bubble bot">안녕하세요! Xin chào! Hãy hỏi về giá, đặt lịch, đóng gói hoặc checklist nhé.</div></div><div class="chat-input"><input id="chatInput" placeholder="예: 이사 비용은 얼마예요? / Giá bao nhiêu?"><button type="button" id="chatSend">전송 / Gửi</button></div><div class="chips"><button type="button" data-question="Giá chuyển nhà">💰 Giá</button><button type="button" data-question="예약 방법">📅 Đặt lịch</button><button type="button" data-question="Checklist chuyển nhà">📋 Checklist</button><button type="button" data-question="포장 서비스">📦 Đóng gói</button></div></div></section>
+<footer>MoveMate Korea · University Project Prototype<br>실제 결제 및 예약이 진행되지 않는 프로젝트용 웹사이트입니다.</footer>
+
+<div class="modal" id="modal"><div class="modal-box"><h3>예약 신청 완료!</h3><p>프로젝트 시연용 예약 신청이 접수되었습니다.<br>실제 예약이나 결제는 진행되지 않습니다.</p><button onclick="closeModal()">확인</button></div></div>
+
+<script>
+function calcBase(km){if(km<=3)return 25000;if(km<=5)return 30000;if(km<=10)return 40000;if(km<=15)return 50000;if(km<=20)return 60000;return null;}
+function formatWon(n){return n.toLocaleString("ko-KR")+"₩";}
+function currentQuote(){const raw=document.getElementById("km").value;const km=Number(raw),load=document.getElementById("luggage").value,packing=document.getElementById("packing").value==="yes";if(raw===""||!Number.isFinite(km)||km<=0)return {valid:false,reason:"거리(km)를 입력해 주세요. / Hãy nhập số km."};if(load!=="mini"||km>20)return {valid:false,reason:"별도 견적 필요 / Cần báo giá riêng cho đơn STANDARD, PARTNER hoặc trên 20 km."};const base=calcBase(km);return {valid:true,km,price:base+(packing?10000:0),base,packing};}
+function updatePrice(){const q=currentQuote();document.getElementById("total").textContent=q.valid?formatWon(q.price):"별도 확인 / Chưa có giá";document.getElementById("breakdown").textContent=q.valid?`MINI · ${q.km} km: ${formatWon(q.base)}${q.packing?' + 포장 10,000₩':''} · Giá demo, cần xác nhận`:q.reason;}
+["km","packing","luggage"].forEach(id=>document.getElementById(id).addEventListener("input",updatePrice));
+// Only Kakao Maps JavaScript key belongs in browser code. NEVER put REST API keys here.
+const KAKAO_JS_KEY = ""; // Optional: insert your domain-restricted JavaScript key for all visitors.
+let kakaoMapInstance=null, kakaoGeocoder=null, kakaoMarkers=[];
+let routeVerified=false;
+function invalidateRoute(){routeVerified=false;document.getElementById("drivingResult").textContent="🚗 주행 거리 / Km lái xe: chưa có · ⏱️ 예상 시간 / Thời gian: chưa có";}
+["from","to"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{invalidateRoute();document.getElementById("km").value="";updatePrice();}));
+const mapStatus=document.getElementById("mapStatus");
+const mapBox=document.getElementById("kakaoMap");
+const keyInput=document.getElementById("kakaoKeyInput");
+let storedKakaoKey="";
+try{storedKakaoKey=localStorage.getItem("movemate-kakao-js-key")||"";}catch(e){}
+keyInput.value=storedKakaoKey;
+function loadKakaoMaps(key){
+ if(!key){mapStatus.textContent="Chưa có JavaScript Key. Mở ⚙️ Cài đặt bản đồ để nhập khóa.";return;}
+ if(window.kakao&&window.kakao.maps){initKakaoMap();return;}
+ mapStatus.textContent="Đang tải Kakao Maps... / 카카오맵 불러오는 중...";
+ const script=document.createElement("script");
+ script.src="https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey="+encodeURIComponent(key);
+ script.onload=()=>{
+   if(!window.kakao||!kakao.maps){mapStatus.textContent="Không tải được Kakao Maps SDK.";return;}
+   kakao.maps.load(initKakaoMap);
+ };
+ script.onerror=()=>{mapStatus.textContent="Không tải được Kakao Maps. Kiểm tra JavaScript Key, tên miền và kết nối mạng.";};
+ document.head.appendChild(script);
+}
+function initKakaoMap(){
+ if(kakaoMapInstance)return;
+ mapBox.textContent="";
+ kakaoMapInstance=new kakao.maps.Map(mapBox,{center:new kakao.maps.LatLng(36.3504,127.3845),level:7});
+ kakaoGeocoder=new kakao.maps.services.Geocoder();
+ mapStatus.textContent="Bản đồ đã sẵn sàng! Nhập 2 địa chỉ rồi bấm tìm. / 지도 준비 완료";
+}
+function geocodeAddress(address){return new Promise((resolve,reject)=>{
+ kakaoGeocoder.addressSearch(address,(results,status)=>{
+ if(status===kakao.maps.services.Status.OK&&results.length)resolve(results[0]);
+ else reject(new Error("Không tìm được địa chỉ: "+address+". Hãy nhập địa chỉ đường (도로명주소) đầy đủ."));
+ });
+});}
+async function showLocations(){
+ if(!kakaoGeocoder){mapStatus.textContent="Cần cấu hình JavaScript Key trước khi tìm địa chỉ.";return;}
+ const a=document.getElementById("from").value.trim(),b=document.getElementById("to").value.trim();
+ if(!a||!b){mapStatus.textContent="Hãy nhập đầy đủ địa chỉ đi và đến.";return;}
+ const btn=document.getElementById("routeBtn");btn.disabled=true;
+ mapStatus.textContent="Đang tìm 2 địa chỉ... / 주소 검색 중...";
+ try{
+ invalidateRoute();
+ const [start,end]=await Promise.all([geocodeAddress(a),geocodeAddress(b)]);
+ kakaoMarkers.forEach(m=>m.setMap(null));kakaoMarkers=[];
+ const bounds=new kakao.maps.LatLngBounds();
+ [[start,"출발 / Đi"],[end,"도착 / Đến"]].forEach(([r,title])=>{
+ const pos=new kakao.maps.LatLng(Number(r.y),Number(r.x));bounds.extend(pos);
+ const marker=new kakao.maps.Marker({position:pos,map:kakaoMapInstance,title});kakaoMarkers.push(marker);
+ const info=new kakao.maps.InfoWindow({content:'<div style="padding:5px 9px;white-space:nowrap;font-size:12px">'+title+'</div>'});
+ kakao.maps.event.addListener(marker,"click",()=>info.open(kakaoMapInstance,marker));
+ });
+ kakaoMapInstance.setBounds(bounds);
+ mapStatus.textContent="Đã tìm thấy 2 địa chỉ. Đang tính đường ô tô... / 자동차 경로 계산 중...";
+ try{
+  const response=await fetch("/.netlify/functions/driving-route",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({origin:{x:Number(start.x),y:Number(start.y)},destination:{x:Number(end.x),y:Number(end.y)}})});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok||!Number.isFinite(data.distanceKm)||!Number.isFinite(data.durationMinutes))throw new Error(data.error||"API chỉ đường chưa sẵn sàng");
+  document.getElementById("km").value=data.distanceKm.toFixed(1);
+  routeVerified=true;
+  updatePrice();
+  document.getElementById("drivingResult").textContent=`🚗 주행 거리 / Km lái xe: ${data.distanceKm.toFixed(1)} km · ⏱️ 예상 시간 / Thời gian: ${Math.round(data.durationMinutes)} phút`;
+  mapStatus.textContent="Đã tính theo đường ô tô. Giá được cập nhật tự động! / 자동차 거리 및 예상 요금 계산 완료";
+ }catch(routeErr){mapStatus.textContent="Đã đánh dấu 2 địa chỉ. Chưa tính được đường ô tô: "+routeErr.message+". Hãy nhập km thủ công.";}
+ 
+ }catch(err){mapStatus.textContent=err.message;}
+ finally{btn.disabled=false;}
+}
+document.getElementById("routeBtn").addEventListener("click",showLocations);
+document.getElementById("saveKakaoKey").addEventListener("click",()=>{
+ const key=keyInput.value.trim();if(!key){mapStatus.textContent="Hãy nhập JavaScript Key.";return;}
+ try{localStorage.setItem("movemate-kakao-js-key",key);}catch(e){}
+ mapStatus.textContent="Đã lưu khóa trên thiết bị này. Đang tải bản đồ...";
+ if(window.kakao&&window.kakao.maps){initKakaoMap();return;}
+ loadKakaoMaps(key);
+});
+loadKakaoMaps(KAKAO_JS_KEY||storedKakaoKey);
+updatePrice();
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbx-lQFbt8-l2mn82PmcuVZFd4jslDxwFznzOBCckYHdvzkloYuwDcFpYkx4QZfdBPE75w/exec";
+
+async function submitBooking(){
+ const from=document.getElementById("from").value.trim(),to=document.getElementById("to").value.trim(),name=document.getElementById("name").value.trim(),contact=document.getElementById("contact").value.trim();
+ const date=document.getElementById("date").value,time=document.getElementById("time").value,km=parseFloat(document.getElementById("km").value)||0,packing=document.getElementById("packing").value;
+ const quote=currentQuote(),price=quote.valid?quote.price:null,button=document.querySelector('button[onclick="submitBooking()"]');
+ if(!from||!to||!name||!contact){alert("출발지, 도착지, 이름, 연락처를 입력해주세요.\nVui lòng nhập địa chỉ đi, địa chỉ đến, tên và liên hệ.");return;}
+ if(!quote.valid){alert(quote.reason+"\nVui lòng nhập km và chọn gói MINI để nhận giá demo. Đơn khác cần báo giá riêng.");return;}
+  const payload={name,contact,from,to,date,time,km,price};
+ try{
+  button.disabled=true; button.textContent="접수 중... / Đang gửi...";
+  await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+  // no-cors không cho xác minh Google Sheets đã nhận dữ liệu.
+   document.querySelector("#modal h3").textContent="요청 전송 시도 / Đã thử gửi yêu cầu";
+   document.querySelector("#modal p").textContent="Google Sheets 수신 여부는 관리자 확인이 필요합니다. / Cần kiểm tra Google Sheets để xác nhận đơn đã được lưu. Đây là bản demo, chưa xác nhận đặt lịch thật.";
+   document.getElementById("modal").style.display="flex";
+ }catch(error){
+  console.error(error);
+  alert("예약 신청 전송에 실패했습니다. 잠시 후 다시 시도해주세요.\nGửi yêu cầu thất bại. Vui lòng thử lại sau.");
+ }finally{button.disabled=false;button.textContent="예약 신청하기 / Gửi yêu cầu";}
+}
+function closeModal(){document.getElementById("modal").style.display="none";}
+
+const checklistGroups=[{title:"이사 1주 전 / Trước 1 tuần",items:["집주인에게 이사 일정 알리기 / Báo chủ nhà lịch chuyển","보증금·계약 조건 확인 / Kiểm tra tiền cọc, hợp đồng","필요 없는 물건 정리 / Phân loại đồ không dùng","이사 날짜 및 운송 예약 / Đặt lịch vận chuyển"]},{title:"이사 전날 / Trước 1 ngày",items:["짐 포장 및 상자 표시 / Đóng gói, ghi nhãn thùng","귀중품 따로 보관 / Cất riêng đồ giá trị","새 집 주소·출입 방법 확인 / Kiểm tra địa chỉ nhà mới"]},{title:"이사 후 / Sau khi chuyển",items:["짐 상태 확인 / Kiểm tra đồ đạc","집 상태 사진 촬영 / Chụp ảnh tình trạng phòng","외국인 체류지 변경 신고 확인 / Kiểm tra nghĩa vụ khai báo thay đổi nơi cư trú"]}];
+const taskItems=checklistGroups.flatMap(g=>g.items);const storageKey="movemate-checklist-v2";let done=[];try{done=JSON.parse(localStorage.getItem(storageKey)||"[]");if(!Array.isArray(done))done=[];}catch(e){done=[];}
+function renderTasks(){const el=document.getElementById("tasks");el.innerHTML="";let i=0;checklistGroups.forEach(group=>{const h=document.createElement("h3");h.className="task-group";h.textContent=group.title;el.append(h);group.items.forEach(task=>{const index=i++;const wrap=document.createElement("div");wrap.className="task-item";const check=document.createElement("input");check.type="checkbox";check.id="task-"+index;check.checked=done.includes(index);const label=document.createElement("label");label.htmlFor=check.id;label.textContent=task;check.addEventListener("change",()=>{done=check.checked?[...new Set([...done,index])]:done.filter(n=>n!==index);try{localStorage.setItem(storageKey,JSON.stringify(done));}catch(e){}updateProgress();});wrap.append(check,label);el.append(wrap);});});updateProgress();}
+function updateProgress(){const n=taskItems.length,p=Math.round(done.length/n*100);document.getElementById("progressBar").style.width=p+"%";document.getElementById("progressText").textContent=`${done.length}/${n} 완료 · ${p}% hoàn thành`;}
+document.getElementById("resetTasks").addEventListener("click",()=>{if(confirm("체크리스트를 초기화할까요? / Xóa tiến độ checklist?")){done=[];try{localStorage.removeItem(storageKey);}catch(e){}renderTasks();}});renderTasks();
+function replyFor(q){const t=q.toLowerCase();if(/가격|비용|요금|얼마|giá|tiền|bao nhiêu|cost|price/.test(t))return "MINI: 0–3 km 25.000₩, 3–5 km 30.000₩, 5–10 km 40.000₩, 10–15 km 50.000₩, 15–20 km 60.000₩. 포장 / Đóng gói +10.000₩. STANDARD/PARTNER: báo giá riêng. Đây là giá demo.";if(/예약|đặt|lịch|booking/.test(t))return "예약 / Đặt lịch: vào mục 이사 예약, nhập địa chỉ, ngày giờ, km, tên và liên hệ. Bấm 예약 신청하기. Quản trị viên cần kiểm tra Google Sheets để xác nhận.";if(/체크|준비|checklist|chuẩn bị/.test(t))return "이사 체크리스트 / Checklist: trước khi chuyển hãy báo chủ nhà, kiểm tra hợp đồng, đóng gói; sau khi chuyển kiểm tra đồ và nghĩa vụ khai báo nơi cư trú. Xem mục 체크리스트 trên web.";if(/포장|đóng gói|packing/.test(t))return "MINI 포장 도움 / Hỗ trợ đóng gói: +10.000₩ (giá demo). Đơn nhiều đồ sẽ báo giá riêng.";if(/주소|체류지|địa chỉ|cư trú/.test(t))return "체류지 변경 / Thay đổi nơi cư trú: người nước ngoài có thể phải khai báo trong thời hạn luật định. Hãy kiểm tra hướng dẫn mới nhất trên HiKorea hoặc cơ quan xuất nhập cảnh, chatbot này không thay thế tư vấn pháp lý.";if(/안녕|xin chào|hello|hi/.test(t))return "안녕하세요! Xin chào! Bạn muốn hỏi về giá, đặt lịch, đóng gói hay checklist?";return "죄송합니다. 현재 FAQ 챗봇이라 이 질문을 정확히 이해하지 못했습니다. / Xin lỗi, chatbot FAQ chưa hiểu câu hỏi. Bạn thử hỏi về giá, đặt lịch, đóng gói hoặc checklist nhé.";}
+function sendChat(q){q=(q||"").trim();if(!q)return;const box=document.getElementById("messages");function bubble(content,cls){const d=document.createElement("div");d.className="bubble "+cls;d.textContent=content;box.append(d);}bubble(q,"user");bubble(replyFor(q),"bot");box.scrollTop=box.scrollHeight;document.getElementById("chatInput").value="";}
+document.getElementById("chatSend").addEventListener("click",()=>sendChat(document.getElementById("chatInput").value));document.getElementById("chatInput").addEventListener("keydown",e=>{if(e.key==="Enter")sendChat(e.target.value);});document.querySelectorAll("[data-question]").forEach(b=>b.addEventListener("click",()=>sendChat(b.dataset.question)));
+</script>
+</body></html>
