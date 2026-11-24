@@ -250,6 +250,27 @@ input:focus,select:focus,textarea:focus{outline:2px solid #4e99ff;outline-offset
 <label class="market-consent"><input data-i18n="consent" id="mkConsent" required="" type="checkbox"/> 상품 정보 공개에 동의합니다. / Tôi đồng ý công khai thông tin sản phẩm. Không đăng số điện thoại riêng tư nếu không muốn công khai.</label>
 <button data-i18n="submitItem" id="mkSubmit" type="submit">물품 등록 / Đăng sản phẩm</button><div class="mm-success" id="mkFeedback" role="status"></div>
 </form></div></section>
+
+<section id="mm-feedback" aria-labelledby="mmf-title">
+<h2 id="mmf-title">⭐ 후기 / Đánh giá & Báo sự cố</h2>
+<p>⭐ 누구나 로그인 후 후기를 작성할 수 있습니다. / Mọi tài khoản đã đăng nhập có thể đánh giá, không cần đặt dịch vụ.</p>
+<div class="mmf-grid">
+ <div class="mmf-card"><h3>⭐ 이용 후기 / Đánh giá 1–5 sao</h3>
+ <p class="mmf-note">Mỗi tài khoản có một đánh giá, có thể cập nhật. Đánh giá được Admin duyệt trước khi công khai. Không hiển thị email.</p>
+ <form id="mmf-review-form"><label>Chọn số sao / 별점</label><div class="mmf-stars" id="mmf-stars" role="group" aria-label="Rating"><button type="button" data-star="1" aria-label="1 sao">★</button><button type="button" data-star="2" aria-label="2 sao">★</button><button type="button" data-star="3" aria-label="3 sao">★</button><button type="button" data-star="4" aria-label="4 sao">★</button><button type="button" data-star="5" aria-label="5 sao">★</button></div>
+ <label for="mmf-comment">Nhận xét / 후기</label><textarea id="mmf-comment" minlength="10" maxlength="700" required placeholder="Viết từ 10 đến 700 ký tự..."></textarea>
+ <button class="mmf-submit" type="submit">Gửi / cập nhật đánh giá</button><p id="mmf-review-message" role="status" class="mmf-status"></p></form>
+ <h3>Đánh giá công khai / 공개 후기</h3><div id="mmf-reviews" aria-live="polite">Đang tải...</div></div>
+ <div class="mmf-card"><h3>📦 파손 신고 / Báo hư hỏng</h3>
+ <p class="mmf-note">Chỉ gửi báo cáo cho đơn hàng của chính bạn. Thông tin sự cố và ảnh chỉ dành cho bạn và Admin. Đây là kênh tiếp nhận sự cố, không phải cam kết bảo hiểm/bồi thường.</p>
+ <form id="mmf-incident-form"><label for="mmf-order">Mã đơn / 주문번호</label><input id="mmf-order" required placeholder="MM-20261124-000001" maxlength="50" />
+ <label for="mmf-kind">Loại sự cố / 사고 유형</label><select id="mmf-kind"><option value="damage">Hàng hỏng / 파손</option><option value="loss">Thất lạc / 분실</option><option value="delay">Chậm trễ / 지연</option><option value="other">Khác / 기타</option></select>
+ <label for="mmf-contact">Liên hệ / 연락처</label><input id="mmf-contact" maxlength="120" minlength="3" required placeholder="KakaoTalk hoặc số điện thoại" />
+ <label for="mmf-description">Mô tả / 내용</label><textarea id="mmf-description" minlength="15" maxlength="1500" required placeholder="Mô tả chi tiết sự cố (15–1500 ký tự)"></textarea>
+ <label for="mmf-image">Ảnh bằng chứng / 증빙 사진 (không bắt buộc, tối đa 5MB)</label><input id="mmf-image" type="file" accept="image/jpeg,image/png,image/webp" />
+ <button class="mmf-submit" type="submit">Gửi báo cáo / 신고 접수</button><p id="mmf-incident-message" class="mmf-status" role="status"></p></form></div>
+</div></section>
+
 <section id="checklist"><h2 data-i18n="checklist">📋 이사 체크리스트 / Checklist chuyển nhà</h2><div class="form-wrap"><p class="muted" data-i18n="checkDesc">체크한 항목은 이 기기에 저장됩니다. / Những mục đã tích được lưu trên thiết bị này.</p><div class="progress"><div id="progressBar"></div></div><p id="progressText" style="font-weight:700">0% hoàn thành</p><div id="tasks"></div><button class="secondary" data-i18n="reset" id="resetTasks" type="button">초기화 / Làm lại</button></div></section>
 <section id="chatbot"><h2 data-i18n="chat">💬 한·베 챗봇 / Chatbot Hàn–Việt</h2><div class="form-wrap"><p class="muted" data-i18n="chatDesc">FAQ 챗봇 / Chatbot trả lời câu hỏi thường gặp (chưa phải AI tạo sinh).</p><div aria-live="polite" class="messages" id="messages"><div class="bubble bot">안녕하세요! Xin chào! Hãy hỏi về giá, đặt lịch, đóng gói hoặc checklist nhé.</div></div><div class="chat-input"><input data-i18n-placeholder="chatHint" id="chatInput" placeholder="예: 이사 비용은 얼마예요? / Giá bao nhiêu?"/><button data-i18n="send" id="chatSend" type="button">전송 / Gửi</button></div><div class="chips"><button data-question="Giá chuyển nhà" type="button">💰 Giá</button><button data-question="예약 방법" type="button">📅 Đặt lịch</button><button data-question="Checklist chuyển nhà" type="button">📋 Checklist</button><button data-question="포장 서비스" type="button">📦 Đóng gói</button></div></div></section>
 <footer data-i18n="footer">MoveMate Korea · University Project Prototype<br/>실제 결제 및 예약이 진행되지 않는 프로젝트용 웹사이트입니다.</footer>
@@ -446,23 +467,28 @@ window.addEventListener('movemate:market-data',e=>{marketRemote=e.detail.items;m
 
 renderMarket();
 async function submitBooking(){
- const from=document.getElementById("from").value.trim(),to=document.getElementById("to").value.trim(),name=document.getElementById("name").value.trim(),contact=document.getElementById("contact").value.trim();
- const date=document.getElementById("date").value,time=document.getElementById("time").value,km=parseFloat(document.getElementById("km").value)||0,packing=document.getElementById("packing").value;
- const quote=currentQuote(),price=quote.valid?quote.price:null,button=document.querySelector('button[onclick="submitBooking()"]');
- if(!from||!to||!name||!contact){alert("출발지, 도착지, 이름, 연락처를 입력해주세요.\nVui lòng nhập địa chỉ đi, địa chỉ đến, tên và liên hệ.");return;}
- if(!quote.valid){alert(quote.reason+"\nVui lòng nhập km và chọn gói MINI để nhận giá demo. Đơn khác cần báo giá riêng.");return;}
-  const payload={name,contact,from,to,date,time,km,price};
+ const get=id=>document.getElementById(id).value;
+ const from=get('from').trim(),to=get('to').trim(),name=get('name').trim(),contact=get('contact').trim();
+ const date=get('date'),time=get('time'),km=Number(get('km'))||0;
+ const quote=currentQuote();
+ const button=document.querySelector('button[onclick="submitBooking()"]');
+ if(!from||!to||!name||!contact||!date||!time){alert('Vui lòng nhập đầy đủ họ tên, liên hệ, địa chỉ, ngày giờ chuyển. / 이름, 연락처, 주소, 날짜, 시간을 입력하세요.');return;}
+ if(!quote.valid){alert(quote.reason+'\\nVui lòng nhập km và chọn gói MINI để nhận giá demo.');return;}
+ const sb=window.moveMateSupabase;
+ if(!sb){alert('Supabase chưa sẵn sàng. Hãy thử tải lại trang.');return;}
+ const {data:{user},error:authError}=await sb.auth.getUser();
+ if(authError||!user){alert('Vui lòng đăng nhập trước khi đặt lịch. / 예약 전 로그인해주세요.');return;}
+ const payload={customer_id:user.id,customer_name:name,contact,from_address:from,to_address:to,moving_date:date,moving_time:time,distance_km:km,estimated_price:quote.price,packing:get('packing')==='yes',luggage:get('luggage'),floor_from:Number(get('floorFrom'))||null,floor_to:Number(get('floorTo'))||null,notes:get('notes').trim(),status:'pending'};
+ const original=button.textContent;
  try{
-  button.disabled=true; button.textContent="접수 중... / Đang gửi...";
-  await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
-  // no-cors không cho xác minh Google Sheets đã nhận dữ liệu.
-   document.querySelector("#modal h3").textContent="요청 전송 시도 / Đã thử gửi yêu cầu";
-   document.querySelector("#modal p").textContent="Google Sheets 수신 여부는 관리자 확인이 필요합니다. / Cần kiểm tra Google Sheets để xác nhận đơn đã được lưu. Đây là bản demo, chưa xác nhận đặt lịch thật.";
-   document.getElementById("modal").style.display="flex";
- }catch(error){
-  console.error(error);
-  alert("예약 신청 전송에 실패했습니다. 잠시 후 다시 시도해주세요.\nGửi yêu cầu thất bại. Vui lòng thử lại sau.");
- }finally{button.disabled=false;button.textContent="예약 신청하기 / Gửi yêu cầu";}
+  button.disabled=true;button.textContent='접수 중... / Đang lưu...';
+  const {data,error}=await sb.from('moving_orders').insert(payload).select('order_code').single();
+  if(error)throw error;
+  document.querySelector('#modal h3').textContent='예약 요청 접수 완료 / Đã nhận yêu cầu';
+  document.querySelector('#modal p').textContent='Mã đơn / 주문번호: '+data.order_code+' — Đơn thử nghiệm đã lưu vào Supabase. Đây chưa phải xác nhận vận chuyển thực tế.';
+  document.getElementById('modal').style.display='flex';
+ }catch(error){console.error(error);alert('Không lưu được đơn vào Supabase: '+error.message+'\\nHãy chạy file SQL_SETUP.sql rồi thử lại.');}
+ finally{button.disabled=false;button.textContent=original;}
 }
 function closeModal(){document.getElementById("modal").style.display="none";}
 
@@ -690,5 +716,37 @@ document.getElementById('mmChatForm').addEventListener('submit',async e=>{
   addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(update)}},{passive:true});update();
  }
 })();
+</script>
+
+<style id="mm-feedback-style">
+#mm-feedback{max-width:1100px;margin:36px auto;padding:18px 20px;scroll-margin-top:100px}
+#mm-feedback *{box-sizing:border-box}#mm-feedback .mmf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+#mm-feedback .mmf-card{background:#fff;border:1px solid #dce8f6;border-radius:16px;padding:21px;box-shadow:0 4px 20px #124c7e0d}
+#mm-feedback h2,#mm-feedback h3{color:#075ca5}#mm-feedback p{line-height:1.55}
+#mm-feedback form{display:grid;gap:10px}#mm-feedback input,#mm-feedback select,#mm-feedback textarea{width:100%;padding:11px;border:1px solid #bfcee1;border-radius:9px;font:inherit}
+#mm-feedback textarea{min-height:108px}#mm-feedback label{font-weight:600}#mm-feedback button.mmf-submit{background:#0878d8;color:white;border:0;border-radius:9px;padding:12px;cursor:pointer}
+#mm-feedback button:disabled{opacity:.55}#mm-feedback .mmf-stars{display:flex;gap:8px}
+#mm-feedback .mmf-stars button{border:0;background:none;font-size:31px;color:#b4bdcb;cursor:pointer;padding:2px}
+#mm-feedback .mmf-stars button.on{color:#e8a900}#mm-feedback .mmf-note{font-size:13px;color:#54687e}
+#mm-feedback .mmf-review{padding:10px 0;border-bottom:1px solid #e6edf5;white-space:pre-wrap;overflow-wrap:anywhere}
+#mm-feedback .mmf-status{min-height:22px;color:#175e9a;font-weight:600}
+@media(max-width:740px){#mm-feedback .mmf-grid{grid-template-columns:1fr}}
+</style>
+<script type="module" id="mm-feedback-app">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const sb=window.moveMateSupabase || createClient('https://sfajrgdzdlvzvpqxqdff.supabase.co','sb_publishable_OWxgkRnRYq-K_xCCQXmcQg_p8zMnqSU');
+const el=id=>document.getElementById(id);let stars=0;
+function drawStars(){document.querySelectorAll('#mmf-stars [data-star]').forEach(b=>{b.classList.toggle('on',Number(b.dataset.star)<=stars);b.setAttribute('aria-pressed',String(Number(b.dataset.star)===stars));});}
+document.querySelectorAll('#mmf-stars [data-star]').forEach(b=>b.addEventListener('click',()=>{stars=Number(b.dataset.star);drawStars();}));
+async function getUser(){const {data,error}=await sb.auth.getUser();return error?null:data?.user;}
+async function renderReviews(){const list=el('mmf-reviews');const {data,error}=await sb.from('mm_reviews').select('rating,comment,created_at').eq('approved',true).order('created_at',{ascending:false}).limit(30);list.replaceChildren();if(error){list.textContent='Chưa tải được đánh giá: '+error.message;return;}if(!data?.length){list.textContent='Chưa có đánh giá được duyệt.';return;}for(const r of data){const div=document.createElement('article');div.className='mmf-review';const title=document.createElement('strong');title.textContent='★'.repeat(r.rating)+'☆'.repeat(5-r.rating);const body=document.createElement('p');body.textContent=r.comment;const date=document.createElement('small');date.textContent=new Date(r.created_at).toLocaleDateString('vi-VN');div.append(title,body,date);list.append(div);}}
+async function loadOwn(){const user=await getUser();if(!user)return;const {data}=await sb.from('mm_reviews').select('rating,comment').eq('user_id',user.id).maybeSingle();if(data){stars=data.rating;el('mmf-comment').value=data.comment;drawStars();}}
+el('mmf-review-form').addEventListener('submit',async ev=>{ev.preventDefault();const info=el('mmf-review-message');const user=await getUser();if(!user){info.textContent='Vui lòng đăng nhập trước khi đánh giá / 로그인해주세요.';return;}if(!stars){info.textContent='Chọn 1–5 sao trước nhé.';return;}const comment=el('mmf-comment').value.trim();if(comment.length<10){info.textContent='Nhận xét phải dài ít nhất 10 ký tự.';return;}const btn=ev.currentTarget.querySelector('button[type=submit]');btn.disabled=true;info.textContent='Đang lưu...';try{const {error}=await sb.from('mm_reviews').upsert({user_id:user.id,rating:stars,comment,approved:false},{onConflict:'user_id'});if(error)throw error;info.textContent='Đã lưu! Admin sẽ duyệt trước khi đánh giá xuất hiện công khai.';await renderReviews();}catch(err){info.textContent='Lỗi: '+err.message;}finally{btn.disabled=false;}});
+el('mmf-incident-form').addEventListener('submit',async ev=>{ev.preventDefault();const form=ev.currentTarget,info=el('mmf-incident-message'),btn=form.querySelector('button[type=submit]');const user=await getUser();if(!user){info.textContent='Vui lòng đăng nhập trước khi gửi báo cáo.';return;}btn.disabled=true;info.textContent='Đang kiểm tra mã đơn...';let imagePath=null;
+try{const code=el('mmf-order').value.trim().toUpperCase();const {data:order,error:orderError}=await sb.from('moving_orders').select('id').eq('order_code',code).eq('customer_id',user.id).maybeSingle();if(orderError)throw orderError;if(!order)throw new Error('Không tìm thấy mã đơn thuộc tài khoản đang đăng nhập.');
+const f=el('mmf-image').files?.[0];if(f){if(f.size>5*1024*1024)throw new Error('Ảnh phải dưới 5MB.');const types={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};if(!types[f.type])throw new Error('Chỉ chấp nhận JPG, PNG, WEBP.');imagePath=user.id+'/'+crypto.randomUUID()+'.'+types[f.type];info.textContent='Đang tải ảnh lên...';const {error:upErr}=await sb.storage.from('mm-incident-evidence').upload(imagePath,f,{contentType:f.type,upsert:false});if(upErr)throw upErr;}
+const payload={user_id:user.id,order_id:order.id,kind:el('mmf-kind').value,contact:el('mmf-contact').value.trim(),description:el('mmf-description').value.trim(),image_path:imagePath};const {error}=await sb.from('mm_incidents').insert(payload);if(error)throw error;info.textContent='Đã tiếp nhận báo cáo! Admin sẽ xem và xử lý.';form.reset();}
+catch(err){info.textContent='Chưa gửi được: '+err.message;}finally{btn.disabled=false;}});
+await renderReviews();await loadOwn();sb.auth.onAuthStateChange(()=>{setTimeout(loadOwn,0)});
 </script>
 </body></html>
